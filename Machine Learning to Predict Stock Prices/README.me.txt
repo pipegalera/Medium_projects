@@ -1,1 +1,0 @@
-https://towardsdatascience.com/predicting-stock-prices-using-a-keras-lstm-model-4225457f0233
