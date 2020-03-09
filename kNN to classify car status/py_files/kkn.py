@@ -1,3 +1,11 @@
+# @Author: Pipe galera
+# @Date:   09-03-2020
+# @Email:  pipegalera@gmail.com
+# @Last modified by:   Pipe galera
+# @Last modified time: 09-03-2020
+
+
+
 # -*- coding: utf-8 -*-
 """
 Created on Mon Feb  3 15:40:15 2020
@@ -57,7 +65,7 @@ for i in range(1,100):
         best_score = acc
         best_neighbors = i
 
-print("Best cccuracy " + str(best_score) + " reached with " + str(best_neighbors) + " Neighbors")
+print("Best acccuracy " + str(best_score) + " reached with " + str(best_neighbors) + " Neighbors")
 
 # Seeing actual predictions
 

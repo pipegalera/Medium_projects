@@ -17,12 +17,12 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import re
 from sklearn import tree, svm
-from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+from sklearn.preprocessing import LabelEncoder
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split, GridSearchCV
 import os
-
+from sklearn.neural_network import MLPClassifier
 
 # Figures inline and set visualization style
 %matplotlib inline
@@ -127,10 +127,82 @@ DecisionTreeClassifier = tree.DecisionTreeClassifier()
 DecisionTreeClassifier_cv = GridSearchCV(DecisionTreeClassifier, param_grid= param_grid)
 DecisionTreeClassifier_cv.fit(X, y)
 
-print("Best cccuracy " + str(DecisionTreeClassifier_cv.best_score_) + " reached with " + str(DecisionTreeClassifier_cv.best_params_) )
+print("Best cccuracy " + str(DecisionTreeClassifier_cv.best_score_) + " reached with " + str(DecisionTreeClassifier_cv.best_params_["max_depth"]) + " trees")
 
 y_pred = DecisionTreeClassifier_cv.predict(X_test)
 
 submission["Survived"] = y_pred
 submission.to_csv('C:/Users/fgm.si/Documents/GitHub/side_projects/titanic/predictions/DecisionTreeClassifier_cv.csv', index=False)
 # 83,3
+
+#######################
+# K-Nearest Neighbors #
+#######################
+
+X = X_train.values
+y = y_train.values
+X_test = features[:418].values
+
+# Using GridSearchCV to find the best neighbors
+n_neighbors = np.arange(1,100)
+param_grid = {"n_neighbors": n_neighbors}
+
+knn = KNeighborsClassifier()
+knn_cv = GridSearchCV(knn, param_grid = param_grid)
+knn_cv.fit(X,y)
+
+print("Best score " + str(knn_cv.best_score_) + " reached with " + str(knn_cv.best_params_["n_neighbors"])+ " neighbors" )
+
+y_pred = knn_cv.predict(X_test)
+
+submission["Survived"] = y_pred
+submission.to_csv('C:/Users/fgm.si/Documents/GitHub/side_projects/titanic/predictions/knn.csv', index=False)
+# 0.77511
+
+##########################
+# Support Vector Machine #
+##########################
+
+# Linear
+best_score = 0
+for i in ["poly", "rbf", "sigmoid"]:
+
+SVM_linear = svm.SVC(kernel = "linear", C=2, gamma = "scale")
+SVM_liner.fit(X, y)
+y_pred = SVM_linear.predict(X_test)
+
+submission["Survived"] = y_pred
+submission.to_csv('C:/Users/fgm.si/Documents/GitHub/side_projects/titanic/predictions/svm_linear.csv', index=False)
+# 0.76555
+
+# Poly
+SVM_poly = svm.SVC(kernel = "poly", C=2, gamma = "scale")
+SVM_poly.fit(X, y)
+y_pred = SVM_poly.predict(X_test)
+
+submission["Survived"] = y_pred
+submission.to_csv('C:/Users/fgm.si/Documents/GitHub/side_projects/titanic/predictions/svm_poly.csv', index=False)
+# 0.76555
+
+# Sigmoid
+SVM_sigmoid = svm.SVC(kernel = "sigmoid", C=2, gamma = "scale")
+SVM_sigmoid.fit(X, y)
+y_pred = SVM_sigmoid.predict(X_test)
+
+submission["Survived"] = y_pred
+submission.to_csv('C:/Users/fgm.si/Documents/GitHub/side_projects/titanic/predictions/svm_sigmoid.csv', index=False)
+# 0.61244
+
+###################
+# Neural Networks #
+###################
+
+MLP = MLPClassifier(activation = "relu",
+                    solver = "adam",
+                    random_state = 1,
+                    max_iter = 500)
+MLP.fit(X,y)
+y_pred = MLP.predict(X_test)
+submission["Survived"] = y_pred
+submission.to_csv('C:/Users/fgm.si/Documents/GitHub/side_projects/titanic/predictions/mlp.csv', index=False)
+# 0.78468
