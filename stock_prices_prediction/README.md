@@ -30,4 +30,4 @@ Basically, the LSTM unit has separate input and forget gates, while the GRU perf
 
 
 
-![Alt text](https://raw.githubusercontent.com/pipegalera/side_projects/master/LSTM%20to%20predict%20Stock%20Prices/figures/combined_ibm_stock_price_pred.png)
+![Alt text](https://raw.githubusercontent.com/pipegalera/side_projects/master/LSTM%20to%20predict%20Stock%20Prices/figures/combined_ibm_stock_price_pred.png?style=centerme)
