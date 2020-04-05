@@ -2,11 +2,11 @@
 
 The aim of the project is using 2006 to 2017 IBM's stock values to predict the stock values of 2018:
 
-![Aim]()
+![Aim](https://raw.githubusercontent.com/pipegalera/side_projects/master/stock_prices_prediction/figures/ibm_stock_price.png)
 
 # Non technical explanation of LTSM and GRU explained in 3 minutes.
 
-The project aim is to predict stocks using only historical stock data. Tradicional Neural Networks are static, in the sense that they do not loop the previous neuron values into the next ones. To solve this dynamism problem,  I will use recurrent neural networks (RNN) for the project. RNNs can be thought of as multiple copies of the same network, each passing the nueron value to a successor.
+Neural Network is one of the main tools in Machine learng to predict outcomes. Tradicionally, Neural Networks do not learn from the previous neuron's values into the next ones. To solve this dynamism problem,  I will use recurrent neural networks (RNN) for the project. RNNs can be thought of as multiple copies of the same network, each passing the nueron value to a successor.
 
 But not that fast. **RNNs are no capable of handling “*long-term dependencies*.”** If the present value depends in a long extent of the long run previous value, RNN tend to not being able to process this long term dependency chain. Therefore, they usually do not do a great job predicting long run time series. **With the task of predicting stocks, the  gap between the relevant information and the point where it is needed is very wide**. How we take into account long-term dependencies? With a LSTM and GRU models. 
 
