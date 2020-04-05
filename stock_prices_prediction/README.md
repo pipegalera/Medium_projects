@@ -4,6 +4,8 @@ The aim of the project is using 2006 to 2017 IBM's stock values to predict the s
 
 ![Aim](https://raw.githubusercontent.com/pipegalera/side_projects/master/stock_prices_prediction/figures/ibm_stock_price.png)
 
+I have used 2 types of Recurrent neural networks for this porpuse: LSTM and GRU models.
+
 # Non technical explanation of LTSM and GRU explained in 3 minutes.
 
 Neural Network is one of the main tools in Machine learng to predict outcomes. Tradicionally, Neural Networks do not learn from the previous neuron's values into the next ones. To solve this dynamism problem,  I will use recurrent neural networks (RNN) for the project. RNNs can be thought of as multiple copies of the same network, each passing the nueron value to a successor.
