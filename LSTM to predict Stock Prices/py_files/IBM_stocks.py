@@ -1,7 +1,7 @@
 # @Author: pipegalera
 # @Date:   2020-03-12T15:30:58+01:00
-# @Last modified by:   pipegalera
-# @Last modified time: 2020-03-12T17:31:17+01:00
+# @Last modified by:   Pipe galera
+# @Last modified time: 05-04-2020
 
 
 
@@ -9,7 +9,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-plt.style.use('fivethirtyeight')
+plt.style.use('seaborn-deep')
 import os
 from sklearn.preprocessing import MinMaxScaler,StandardScaler
 from keras.layers import LSTM, Dropout, Dense, GRU, Bidirectional
@@ -19,7 +19,7 @@ from keras.optimizers import SGD
 from math import sqrt
 
 # Load dataset
-os.chdir("/Users/pipegalera/Documents/GitHub/side_projects/LSTM to predict Stock Prices")
+os.chdir("/Users/fgm.si/Documents/GitHub/side_projects/LSTM to predict Stock Prices")
 data = pd.read_csv('raw_data/IBM_2006-01-01_to_2018-01-01.csv', index_col='Date', parse_dates=['Date'])
 data.shape
 data.head(2)
@@ -98,7 +98,7 @@ model.add(Dense(units=1))
 model.compile(optimizer='rmsprop',loss='mean_squared_error')
 
 """
-we fit the model to run for 100 epochs, the number of times the learning algorithm will work through the entire training set, with a batch size of 32.
+we fit the model to run for 50 epochs, the number of times the learning algorithm will work through the entire training set, with a batch size of 32.
 """
 model.fit(X_train, y_train, epochs = 50, batch_size = 32)
 
@@ -138,8 +138,8 @@ plt.title('IBM Stock Price Prediction')
 plt.xlabel('Time')
 plt.ylabel('IBM Stock Price')
 plt.legend()
-plt.show()
-
+#plt.show()
+plt.savefig("figures/LSTM_ibm_stock_price_pred.jpg")
 # Calculating accuracy
 rmse = sqrt(mean_squared_error(test, pred_stock_price))
 rmse
@@ -177,8 +177,7 @@ regressorGRU.compile(optimizer=SGD(lr=0.01,
                                     nesterov=False),
                      loss='mean_squared_error')
 # Fitting to the training set
-regressorGRU.fit(X_train,y_train,epochs=3, batch_size=150)
-
+regressorGRU.fit(X_train,y_train,epochs=50, batch_size=32)
 
 # Predict prices
 pred_stock_price_GRU = regressorGRU.predict(X_test)
@@ -192,8 +191,21 @@ plt.title('IBM Stock Price Prediction')
 plt.xlabel('Time')
 plt.ylabel('IBM Stock Price')
 plt.legend()
-plt.show()
+plt.savefig("figures/GRU_ibm_stock_price_pred.jpg")
 
 # Calculating accuracy
 rmse_2 = sqrt(mean_squared_error(test, pred_stock_price_GRU))
-rmse_2
+round(rmse_2, 2)
+
+# Comparing both results
+plt.gca().set_facecolor('xkcd:white')
+plt.style.use('tableau-colorblind10')
+plt.plot(test, color='red',label='Real IBM Stock Price')
+plt.plot(pred_stock_price_GRU, color='blue',label='LSTM Predicted IBM Stock Price: RMSE = 2.50')
+plt.plot(pred_stock_price, color='green',label='GRU Predicted IBM Stock Price: RMSE = 3.27')
+plt.title('IBM Stock Price Prediction')
+plt.xlabel('Time')
+plt.ylabel('IBM Stock Price')
+plt.legend()
+plt.savefig("figures/combined_ibm_stock_price_pred.jpg")
+plt.savefig("figures/combined_ibm_stock_price_pred.png")
