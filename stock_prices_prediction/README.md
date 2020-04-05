@@ -1,4 +1,4 @@
-# Background. 
+# Project basis. 
 
 The aim of the project is using 2006 to 2017 IBM's stock values to predict the stock values of 2018:
 
