@@ -12,9 +12,9 @@ But not that fast. **RNNs are no capable of handling “*long-term dependencies*
 
 Long Short Term Memory networks (**LSTM**) and Gated Recurrent Units (**GRU**) are a special kinds of RNN, capable of learning long-term dependencies. These models are powerful enough to learn the most important past behaviors and understand whether or not those past behaviors are important features in making future predictions. 
 
-# Give me more. How they work?
+# A bit more technical: Why they are better than a traditional RNN?
 
-The LSTM and GRU  is able to keep information of long-term dependencies using "gates". In esence, this gates decide how much information to keep of the previous neuron state or values, and how much to drop.
+TBecause they have "gates". LSTM and GRU models are able to keep information of long-term dependencies using filters or gates. In essence, these gates decide how much information to keep of the previous neuron state or values, and how much to drop. This makes the optimization problem or the Neural Network less promp to vanishing or exploding gradient problems.
 
 LSTM operates using:
 
@@ -30,7 +30,7 @@ GRU operates using:
 Basically, the LSTM unit has separate input and forget gates, while the GRU performs both of these operations together via its reset gate.
 
 
-# Results. Measured using the root mean square error.
+# Results of the prediction, measured using the root mean square error.
 
 
 
