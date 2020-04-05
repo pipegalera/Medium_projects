@@ -1,6 +1,10 @@
 # Background. 
 
-# LTSM and GRU explained in 3 minutes.
+The aim of the project is using 2006 to 2017 IBM's stock values to predict the stock values of 2018:
+
+![Aim]()
+
+# Non technical explanation of LTSM and GRU explained in 3 minutes.
 
 The project aim is to predict stocks using only historical stock data. Tradicional Neural Networks are static, in the sense that they do not loop the previous neuron values into the next ones. To solve this dynamism problem,  I will use recurrent neural networks (RNN) for the project. RNNs can be thought of as multiple copies of the same network, each passing the nueron value to a successor.
 
@@ -30,4 +34,4 @@ Basically, the LSTM unit has separate input and forget gates, while the GRU perf
 
 
 
-![Alt text](https://raw.githubusercontent.com/pipegalera/side_projects/master/LSTM%20to%20predict%20Stock%20Prices/figures/combined_ibm_stock_price_pred.png)
+![LSTM and GRU](https://raw.githubusercontent.com/pipegalera/side_projects/master/LSTM%20to%20predict%20Stock%20Prices/figures/combined_ibm_stock_price_pred.png)
