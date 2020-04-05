@@ -1,8 +1,8 @@
 # @Author: Pipe galera
 # @Date:   04-03-2020
 # @Email:  pipegalera@gmail.com
-# @Last modified by:   pipegalera
-# @Last modified time: 2020-03-12T17:48:57+01:00
+# @Last modified by:   Pipe galera
+# @Last modified time: 05-04-2020
 
 
 
@@ -212,7 +212,7 @@ regressorGRU.compile(optimizer=SGD(lr=0.01,
                                     nesterov=False),
                      loss='mean_squared_error')
 # Fitting to the training set
-regressorGRU.fit(X_train,y_train,epochs=3, batch_size=150)
+regressorGRU.fit(X_train,y_train,epochs=50, batch_size=32)
 
 # Predict prices
 pred_stock_price_GRU = regressorGRU.predict(X_test)
