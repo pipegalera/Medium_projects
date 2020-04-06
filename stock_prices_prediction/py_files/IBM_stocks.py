@@ -234,9 +234,9 @@ plt.savefig("figures/GRU_ibm_stock_price_pred.jpg")
 GRU_rmse = sqrt(mean_squared_error(test, pred_stock_price_GRU))
 round(GRU_rmse, 2)
 
-# Visualization of both results
-
-fig, ax = plt.subplots(figsize=(16, 4))
+# Visualization of both results, figsize due to my webpage
+my_dpi = 96
+fig, ax = plt.subplots(figsize=(825/my_dpi, 700/my_dpi))
 ax.plot(test_df, color='red', label='Real IBM Stock Price')
 ax.plot(pred_stock_price_GRU_df, color='green',label='Predicted IBM Stock Price using GRU. RMSE = 3.23')
 ax.plot(LSTM_pred_stock_price_df, color='blue',label='Predicted IBM Stock Price using LSTM. RMSE = 3.01')
@@ -244,4 +244,4 @@ ax.legend(loc="upper right")
 ax.set(title = 'IBM Stock Price Prediction',
        xlabel = "Date",
        ylabel = "High stock price of the day")
-plt.savefig("figures/stock_price_pred.jpg")
+plt.savefig("figures/stock_price_pred.jpg", dpi = my_dpi*10)
