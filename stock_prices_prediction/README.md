@@ -38,6 +38,6 @@ Basically, the LSTM unit has separate input and forget gates, while the GRU perf
 
 # Wait. What am I watching?
 
-Using only historical data, the algorithm is able to identify the high price of every day of 2018 with a absolute mean error of $3 (per day). Given that the stock fluctuated from $140 to $180 and it only used historical data of other years, it's quite remarkable.
+Using only historical data, the algorithm is able to predict the high price of every day of 2018 with a absolute mean error of $3 (per day). Given that the stock fluctuated from $140 to $180 and it only used historical data of other years, it's quite remarkable.
 
 Note that the algorithm do not knows about if the CEO of IBM step down, if there is a black swan in the market or if IBM released a great software in 2018, and still is accurate!  
