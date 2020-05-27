@@ -24,6 +24,7 @@ cancer_data = datasets.load_breast_cancer()
 # Implementation
 X = cancer_data.data
 y = cancer_data.target
+print(X.shape, y.shape)
 
 X_train, X_test, y_train, y_test = sklearn.model_selection.train_test_split(X,y, test_size = 0.2)
 

@@ -1,8 +1,8 @@
 # @Author: Pipe galera
 # @Date:   09-03-2020
 # @Email:  pipegalera@gmail.com
-# @Last modified by:   Pipe galera
-# @Last modified time: 09-03-2020
+# @Last modified by:   pipegalera
+# @Last modified time: 2020-05-21T16:22:58+02:00
 
 
 
@@ -29,11 +29,10 @@ from sklearn.neighbors import KNeighborsClassifier
 
 # Read the data
 
-os.chdir("C:/Users/fgm.si/github/ML-AI-Megacourse/2. K-Nearest Neighbors")
-data = pd.read_csv("raw_data/car.data")
+data = pd.read_csv("/Users/pipegalera/Documents/GitHub/side_projects/kNN to classify car status/raw_data/car.data")
 
 # Pre-Analysis and cleanning irregular data
-
+data
 data.isnull().sum()
 data.dtypes
 
@@ -51,9 +50,10 @@ clas = le.fit_transform(data["class"].values.reshape(-1,1))
 X = list(zip(buying, maint, door, lug_boot, safety))
 y = list(clas)
 
-best_score = 0
+
 X_train, X_test, y_train, y_test = sklearn.model_selection.train_test_split(X,y, test_size = 0.1)
 
+best_score = 0
 for i in range(1,100):
     knn = KNeighborsClassifier(n_neighbors = i)
     knn.fit(X_train, y_train)
@@ -69,8 +69,8 @@ print("Best acccuracy " + str(best_score) + " reached with " + str(best_neighbor
 
 # Seeing actual predictions
 
-predictions = knn.predict(X_test)
+y_pred = knn.predict(X_test)
 
 cars_classification = ["unacc,", "acc,", "good,", "vgood,"]
-for i in range(len(predictions)):
-    print("Predicted: ", cars_classification[predictions[i]], "Actual: ", cars_classification[y_test[i]])
+for i in range(len(y_pred)):
+    print("Predicted: ", cars_classification[y_pred[i]], "Actual: ", cars_classification[y_test[i]])

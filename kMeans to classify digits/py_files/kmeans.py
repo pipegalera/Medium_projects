@@ -1,8 +1,8 @@
 # @Author: Pipe galera
 # @Date:   28-02-2020
 # @Email:  pipegalera@gmail.com
-# @Last modified by:   Pipe galera
-# @Last modified time: 04-03-2020
+# @Last modified by:   pipegalera
+# @Last modified time: 2020-05-21T15:43:38+02:00
 %reset
 # Packages
 import numpy as np
@@ -20,7 +20,7 @@ data = scale(digits.data) # Scale down data to speed up computation
 y = digits.target
 k = 10
 
-def bench_k_means(estimator, name, data): # From sklearn
+def bench_k_means(estimator, name, data): # From sklearn web
     estimator.fit(data)
     print('%-9s\t%i\t%.3f\t%.3f\t%.3f\t%.3f\t%.3f\t%.3f'
           % (name, estimator.inertia_,
